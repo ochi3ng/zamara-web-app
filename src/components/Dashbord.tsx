@@ -1,37 +1,65 @@
-import React, {useEffect, useState} from 'react';
+import { type } from 'os';
 
-type Props = {
-  route:any
+import React, { useEffect, useState } from 'react';
+import {BrowserRouter as Router,Link, useNavigate, useParams} from 'react-router-dom';
+
+type props={
+  id:number
+  firstName:string
+  lastName:string
+  email:string
+  eyeColor:string
+  bloodGroup:string
+  gender:string
+  phone:number
+  height:number
+  weight:number
+  age:number
+  birthDate:number
 }
 
-const Dashbord = ({route}:Props) => {
-  const [user, setUser]= useState();
+const Dashbord = () => {
+  const [getuser, setGetUser] = useState<props>({} as props);
+  const {id} = useParams()
+useEffect(()=>{
+  
 
-  const [userId]=route.params
+  const FetchData= async (id: string | undefined)=>{
+    fetch(`https://dummyjson.com/users/${id}`)
+      .then((res) => res.json())
+      .then((data) => setGetUser(data));
+    console.log()
+  };
+FetchData(id)
 
-  useEffect(()=>{
-    fetch(`https://dummyjson.com/users/${userId}`)
-      .then((res) =>
-        res.json().then((data) => {
-          console.log(data);
-        })
-      )
-      .catch((err)=>console.log(err))
-  }, [userId])
+}, [id])
+
+  const OnclickHandler =()=>{
+    const navigate=useNavigate()
+    navigate("/")
+  }
   return (
-    <div className='dashbord'>
-        <div>Welcome Stephen Amimo</div>
+  <div className='outerdashbord'>
+    <nav>
+      <li><Link to='/'>Home</Link></li>
+        <li><Link to='/staff'>Staff</Link></li>
+        <li><Link to='/continent'>Continent</Link></li>
+    </nav>
+      <div className='dashbord'>
+        <div>Welcome {getuser?.firstName} {getuser?.lastName}</div>
         <p>your profile is as below:</p>
-        <div>Age:50</div>
-        <div>Gender:male</div>
-        <div>Email:atuny0@sohua.com</div>
-        <div>Phone:+637916758914</div>
-        <div>Birth Date:2000-12-25</div>
-        <div>Blood Group:A-</div>
-        <div>Height:189</div>
-        <div>Weight:75.4</div>
-        <div>Eye Color:Green</div>
-    </div>
+        <p>Age:{getuser?.age}</p>
+        <p>Gender:{getuser?.gender}</p>
+        <p>Email:{getuser?.email}</p>
+        <p>Phone:{getuser?.phone}</p>
+        <p>Birth Date:{getuser?.birthDate}</p>
+        <p>Blood Group:{getuser?.bloodGroup}</p>
+        <p>Height:{getuser?.height}</p>
+        <p>Weight:{getuser?.weight}</p>
+        <p>Eye Color:{getuser?.eyeColor}</p>
+        <button onClick={OnclickHandler}>log out</button>
+      </div>
+  </div>
   )
 };
 

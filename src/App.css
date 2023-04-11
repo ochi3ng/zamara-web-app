@@ -22,7 +22,8 @@ background-color: grey;
 .dashbord{
     text-align: center;
   color: white;
-  padding-top: 5rem;
+  width: 80%;
+  margin-left: 10%;
   background-color: darkblue;
 }
 .staff{
@@ -33,4 +34,10 @@ background-color: grey;
   background-color:rgb(31,31,61);
   color: white;
   width: 170px;
+}
+.outerdashbord{
+  background-color:whitesmoke;
+}
+.errorm{
+  color: red;
 }
