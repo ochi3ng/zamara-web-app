@@ -1,4 +1,3 @@
-import { type } from 'os';
 import React, {useState} from 'react';
 import { useNavigate} from 'react-router-dom';
 
@@ -21,14 +20,13 @@ const LoginScreen= () => {
     .then((res)=>
     res.json().then((data)=>{
       setError(true)
-      if(data.token !== undefined) {
+      if(data !== undefined) {
         localStorage.setItem("data", JSON.stringify(data.id));
         navigate(`/dash/ ${data.id}`)
       }
     })
     )
     .catch((error)=>console.log(error))
-    console.log()
   }
   const HandleOnNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value)

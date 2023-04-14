@@ -35,9 +35,55 @@ background-color: grey;
   color: white;
   width: 170px;
 }
+.editbutton{
+  
+  background-color: red;
+  color: white;
+}
+.confirmbutton{
+  margin-left: 2.4rem;
+  background-color: blue;
+  color: white;
+}
+.editbuttons{
+   margin-right: 2.4rem;
+   background-color: blue;
+   color: white;
+}
 .outerdashbord{
   background-color:whitesmoke;
 }
 .errorm{
   color: red;
+}
+.staffpage{
+  text-align: center;
+}
+.Stafftitle{
+text-align: center;
+}
+.staffContainer{
+  text-align: center;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+.table td {
+  text-align: left;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
 }

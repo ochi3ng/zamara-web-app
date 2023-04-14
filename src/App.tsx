@@ -6,6 +6,7 @@ import Dashbord from './components/Dashbord';
 import { Routes, Route } from 'react-router-dom';
 import ContinentScreen from './menu/ContinentScreen';
 import StaffScreen from './menu/staffScreen';
+import CreateStaffPage from './menu/CreateStaffPage';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <Route path='/' element={<LoginScreen/>}/>
     <Route path='/staff' element={<StaffScreen/>}/>
     <Route path='/dash/:id' element={<Dashbord/>}/>
+    <Route path='staffpage' element={<CreateStaffPage/>}/>
     <Route path='/Continent' element={<ContinentScreen/>}/>
    </Routes>
   );

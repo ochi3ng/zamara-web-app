@@ -1,5 +1,3 @@
-import { type } from 'os';
-
 import React, { useEffect, useState } from 'react';
 import {BrowserRouter as Router,Link, useNavigate, useParams} from 'react-router-dom';
 
@@ -19,23 +17,24 @@ type props={
 }
 
 const Dashbord = () => {
+  const navigate = useNavigate()
   const [getuser, setGetUser] = useState<props>({} as props);
   const {id} = useParams()
+ 
 useEffect(()=>{
   
 
-  const FetchData= async (id: string | undefined)=>{
+  const FetchData= async (id: number | undefined)=>{
     fetch(`https://dummyjson.com/users/${id}`)
       .then((res) => res.json())
       .then((data) => setGetUser(data));
-    console.log()
+
   };
-FetchData(id)
+FetchData(Number(id))
 
 }, [id])
-
+console.log(getuser)
   const OnclickHandler =()=>{
-    const navigate=useNavigate()
     navigate("/")
   }
   return (
