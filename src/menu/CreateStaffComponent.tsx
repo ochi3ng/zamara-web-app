@@ -1,18 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 
-function CreateStaffPage() {
-  const [data, setData]= useState()
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [department, setDepartment] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [salary, setSalary] = useState("");
+export interface IStaffuser{
+  id:number | undefined,
+  firstName: string,
+  lastName: string,
+  department: string,
+  email: string,
+  phone: number,
+  salary: number,
+}
+
+function CreateStaffComponent() {
+  const [staffList, setStaffList]= useState ()
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [department, setDepartment] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [salary, setSalary] = useState('');
   const navigate = useNavigate()
+ 
   const Confirmcreate = () => {
-    fetch("https://crudcrud.com/api/a5f0ad869d5b4a77bfa8c17039d84b19/products", {
+    fetch("https://crudcrud.com/api/07e3fb65c7a440e48bcfd71fc0a9d501/products", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -20,14 +32,17 @@ function CreateStaffPage() {
         lastName: lastname,
         department: department,
         email: email,
+        phone:phone,
+        salary:salary
       })
-
+      
     })
       .then((response) => response.json())
-      .then((data)=>setData(data))
+      .then((data)=>setStaffList(data))
+      .catch((error) => console.log(error))
     navigate('/staffpage')
   };
-
+ 
   const Editcreate = () => {
     navigate('/staff')
 
@@ -50,6 +65,7 @@ function CreateStaffPage() {
   const onSalaryChange = (e:any) => {
     setSalary(e.target.value)
   }
+ 
   return (
     <div className='outerStaffdiv'>
       <h1 className='Stafftitle'>Create staff</h1>
@@ -76,4 +92,4 @@ function CreateStaffPage() {
   )
 }
 
-export default CreateStaffPage
+export default CreateStaffComponent
