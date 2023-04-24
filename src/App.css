@@ -87,3 +87,12 @@ text-align: center;
 .table tr:nth-child(even) {
   background-color: #f9f9f9;
 }
+.modal-content {
+  position: absolute;
+  top: 12px;
+left:300px;
+  width: 440px;
+  height: 270px;
+  border-radius:10px;
+  z-index: 2;
+}
